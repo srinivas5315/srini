@@ -10,6 +10,18 @@
         "description": "The name of the HPC cluster. It must be unique in the domain forest; It must contain between 3 and 15 characters with lowercase letters and numbers, and must start with a letter."
       }
     },
+    "JoinName": {
+      "type": "string",
+    "metadata": {
+        "description": "name to domain join"
+      }
+    },  
+    "JoinPass": {
+      "type": "string",
+    "metadata": {
+        "description": "pass to domain join"
+      }
+    },  
     "virtualNetworkName": {
       "type": "string",
       "metadata": {
@@ -785,14 +797,14 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "Name": "[variables('domainName')]",
-          "User": "[concat(variables('domainName'), '\\', parameters('adminUsername'))]",
+          "User": "[parameters('JoinName')]",
           "NumberOfRetries": "50",
           "RetryIntervalInMilliseconds": "10000",
           "Restart": "true",
           "Options": "3"
         },
         "protectedSettings": {
-          "Password": "[parameters('adminPassword')]"
+          "Password": "[parameters('JoinPass')]"
         }
       }
     },
