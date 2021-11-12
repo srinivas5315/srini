@@ -873,6 +873,12 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
+          "JoinName": {
+            "value": "[parameters('JoinName')]"
+          },
+          "JoinPass": {
+            "value": "[parameters('JoinPass')]"
+          },
           "subnetId": {
             "value": "[variables('subnetRef')]"
           },
