@@ -8,18 +8,6 @@
         "description": "The Id of the subnet in which the node is created"
       }
     },
-    "JoinName": {
-      "type": "string",
-    "metadata": {
-        "description": "name to domain join"
-      }
-    },  
-    "JoinPass": {
-      "type": "string",
-    "metadata": {
-        "description": "pass to domain join"
-      }
-    }, 
     "vmName": {
       "type": "string",
       "metadata": {
@@ -226,7 +214,7 @@
       "dnsServers": "[parameters('dnsServers')]"
     },
     "protectedSettings": {
-      "userPassword": "[parameters('JoinPass')]"
+      "userPassword": "[parameters('adminPassword')]"
     },
     "sshKeyConfig": {
       "publicKeys": [
@@ -343,7 +331,7 @@
             "settings": {
               "domainName": "[parameters('domainName')]",
               "ouPath":"[parameters('domainOUPath')]",
-              "userName": "[parameters('JoinName')]",
+              "userName": "[parameters('adminUsername')]",
               "headNodeList": "[parameters('headNodeList')]",
               "certThumbprint": "[parameters('certThumbprint')]",
               "nonDomainRole": "[not(parameters('joinDomain'))]"
