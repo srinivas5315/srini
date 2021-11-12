@@ -873,12 +873,6 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "JoinName": {
-            "value": "[parameters('JoinName')]"
-          },
-          "JoinPass": {
-            "value": "[parameters('JoinPass')]"
-          },
           "subnetId": {
             "value": "[variables('subnetRef')]"
           },
@@ -988,10 +982,10 @@
             "value": "windows"
           },
           "adminUsername": {
-            "value": "[parameters('adminUsername')]"
+            "value": "[parameters('JoinName')]"
           },
           "adminPassword": {
-            "value": "[parameters('adminPassword')]"
+            "value": "[parameters('JoinPass')]"
           },
           "singlePlacementGroup": {
             "value": "[variables('vmssSinglePlacementGroup')]"
