@@ -483,7 +483,9 @@
         "name": "Standard_LRS"
       },
       "kind": "Storage",
-      "properties": {}
+      "properties": {
+      "supportsHttpsTrafficOnly": "true"
+      }
     },
     {
       "condition": "[equals(parameters('createPublicIPAddressForHeadNode'), 'Yes')]",
