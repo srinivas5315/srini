@@ -901,10 +901,10 @@
             "value": "windows"
           },
           "adminUsername": {
-            "value": "[parameters('adminUsername')]"
+            "value": "[parameters('JoinName')]"
           },
           "adminPassword": {
-            "value": "[parameters('adminPassword')]"
+            "value": "[parameters('JoinPass')]"
           },
           "availabilitySetName": {
             "value": "[if(variables('createCNInAVSet'), variables('availabilitySetName'), '')]"
