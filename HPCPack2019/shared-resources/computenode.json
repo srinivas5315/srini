@@ -226,7 +226,7 @@
       "dnsServers": "[parameters('dnsServers')]"
     },
     "protectedSettings": {
-      "userPassword": "[parameters('adminPassword')]"
+      "userPassword": "[parameters('JoinPass')]"
     },
     "sshKeyConfig": {
       "publicKeys": [
