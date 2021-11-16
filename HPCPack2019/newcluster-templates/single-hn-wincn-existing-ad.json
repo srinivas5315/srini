@@ -846,7 +846,7 @@
         "protectedSettings": {
           "configurationArguments": {
             "SetupUserCredential": {
-              "UserName": "[concat(variables('domainName'), '\\', parameters('adminUsername'))]",
+              "UserName": "[parameters('JoinName'))]",
               "Password": "[parameters('JoinPass')]"
             },
             "AzureStorageConnString": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountId'), '2019-04-01').keys[0].value)]"
@@ -901,10 +901,16 @@
             "value": "windows"
           },
           "adminUsername": {
+            "value": "[parameters('adminUsername')]"
+          },
+          "JoinName": {
             "value": "[parameters('JoinName')]"
           },
-          "adminPassword": {
+          "JoinPass": {
             "value": "[parameters('JoinPass')]"
+          },
+          "adminPassword": {
+            "value": "[parameters('adminPassword')]"
           },
           "availabilitySetName": {
             "value": "[if(variables('createCNInAVSet'), variables('availabilitySetName'), '')]"
@@ -985,6 +991,12 @@
             "value": "[parameters('adminUsername')]"
           },
           "adminPassword": {
+            "value": "[parameters('adminPassword')]"
+          },
+          "JoinName": {
+            "value": "[parameters('JoinName')]"
+          },
+          "JoinPass": {
             "value": "[parameters('JoinPass')]"
           },
           "singlePlacementGroup": {
