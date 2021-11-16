@@ -846,7 +846,7 @@
         "protectedSettings": {
           "configurationArguments": {
             "SetupUserCredential": {
-              "UserName": "[parameters('JoinName')]",
+              "UserName": "[concat(variables('domainName'), '\\', parameters('adminUsername'))]",
               "Password": "[parameters('JoinPass')]"
             },
             "AzureStorageConnString": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountId'), '2019-04-01').keys[0].value)]"
