@@ -14,6 +14,18 @@
         "description": "The VM name"
       }
     },
+    "JoinName": {
+      "type": "string",
+      "metadata": {
+        "description": "The value read from kv"
+      }
+    },
+    "JoinPass": {
+      "type": "string",
+      "metadata": {
+        "description": "The value read from kv"
+      }
+    },
     "vmSize": {
       "type": "string",
       "metadata": {
@@ -331,12 +343,12 @@
             "settings": {
               "domainName": "[parameters('domainName')]",
               "ouPath":"[parameters('domainOUPath')]",
-              "userName": "[parameters('adminUsername')]",
+              "userName": "[parameters('JoinName')]",
               "headNodeList": "[parameters('headNodeList')]",
               "certThumbprint": "[parameters('certThumbprint')]",
               "nonDomainRole": "[not(parameters('joinDomain'))]"
             },
-            "protectedSettings": "[if(parameters('joinDomain'), variables('protectedSettings'), json('null'))]"
+            "protectedSettings": "[if(parameters('joinDomain'), parameters('JoinPass'), json('null'))]"
           }
         },
         {
