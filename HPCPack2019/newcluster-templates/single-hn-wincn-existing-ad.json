@@ -982,7 +982,7 @@
             "value": "windows"
           },
           "adminUsername": {
-            "value": "[parameters('JoinName')]"
+            "value": "[parameters('adminUsername')]"
           },
           "adminPassword": {
             "value": "[parameters('JoinPass')]"
