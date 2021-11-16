@@ -797,7 +797,7 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "Name": "[variables('domainName')]",
-          "User": "[parameters('JoinName')]",
+          "User": "[concat(variables('domainName'), '\\', parameters('adminUsername'))]",
           "NumberOfRetries": "50",
           "RetryIntervalInMilliseconds": "10000",
           "Restart": "true",
@@ -847,7 +847,7 @@
           "configurationArguments": {
             "SetupUserCredential": {
               "UserName": "[concat(variables('domainName'), '\\', parameters('adminUsername'))]",
-              "Password": "[parameters('adminPassword')]"
+              "Password": "[parameters('JoinPass')]"
             },
             "AzureStorageConnString": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountId'), '2019-04-01').keys[0].value)]"
           }
@@ -901,7 +901,7 @@
             "value": "windows"
           },
           "adminUsername": {
-            "value": "[parameters('JoinName')]"
+            "value": "[parameters('adminUsername')]"
           },
           "adminPassword": {
             "value": "[parameters('JoinPass')]"
