@@ -797,7 +797,7 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "Name": "[variables('domainName')]",
-          "User": "parameters('JoinPass'))]",
+          "User": "parameters('JoinName'))]",
           "NumberOfRetries": "50",
           "RetryIntervalInMilliseconds": "10000",
           "Restart": "true",
