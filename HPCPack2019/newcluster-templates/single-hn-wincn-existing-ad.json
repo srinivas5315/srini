@@ -21,7 +21,19 @@
     "metadata": {
         "description": "pass to domain join"
       }
-    },  
+    }, 
+      "QRMBaseURL": {
+      "type": "string",
+    "metadata": {
+        "description": "base url for qrm"
+      }
+    },
+        "QrmInstallerBaseUrlSasToken": {
+      "type": "securestring",
+      "metadata": {
+        "description": "The sasToken required to access QrmInstallerBaseUrl."
+      }
+    },
     "virtualNetworkName": {
       "type": "string",
       "metadata": {
@@ -825,7 +837,7 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "configuration": {
-            "url": "[concat(variables('sharedResxBaseUrl'),'/InstallPrimaryHeadNode.ps1.zip')]",
+            "url": "[concat(parameter('QRMBaseURL'),'InstallPrimaryHeadNode.ps1.zip')]",
             "script": "InstallPrimaryHeadNode.ps1",
             "function": "InstallPrimaryHeadNode"
           },
@@ -844,13 +856,10 @@
             "AutoGSUseManagedIdentity": "[equals(parameters('enableManagedIdentityOnHeadNode'), 'Yes')]"
           }
         },
-        "protectedSettings": {
+         "protectedSettings": {
+          "configurationUrlSasToken": "[parameters('QrmInstallerBaseUrlSasToken')]",
           "configurationArguments": {
-            "SetupUserCredential": {
-              "UserName": "[parameters('JoinName')]",
-              "Password": "[parameters('JoinPass')]"
-            },
-            "AzureStorageConnString": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountId'), '2019-04-01').keys[0].value)]"
+            "SourceUrlSasToken": "[parameters('QrmInstallerBaseUrlSasToken')]"
           }
         }
       }
