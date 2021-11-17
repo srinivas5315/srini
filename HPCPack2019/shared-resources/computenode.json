@@ -343,7 +343,7 @@
             "settings": {
               "domainName": "[parameters('domainName')]",
               "ouPath":"[parameters('domainOUPath')]",
-              "userName": "[substring(parameters('JoinName'), 8, length(parameters('JoinName')))]",
+              "userName": "[substring(parameters('JoinName'), 8, 19)]",
               "headNodeList": "[parameters('headNodeList')]",
               "certThumbprint": "[parameters('certThumbprint')]",
               "nonDomainRole": "[not(parameters('joinDomain'))]"
