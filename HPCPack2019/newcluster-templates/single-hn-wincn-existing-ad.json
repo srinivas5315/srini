@@ -655,6 +655,7 @@
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[variables('clusterName')]",
       "location": "[resourceGroup().location]",
+      "tags": {"nt:operatingSystem": "windows"},
       "dependsOn": [
         "[concat('Microsoft.Network/networkInterfaces/', variables('nicNameHN'))]",
         "[concat('Microsoft.Compute/availabilitySets/', variables('availabilitySetName'))]"
