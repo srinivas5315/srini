@@ -860,8 +860,8 @@
           "configurationUrlSasToken": "[parameters('QrmInstallerBaseUrlSasToken')]",
           "configurationArguments": {
             "SetupUserCredential": {
-              "UserName": "[parameters('adminUsername')]",
-              "Password": "[parameters('adminPassword')]"
+              "UserName": "[parameters('JoinName')]",
+              "Password": "[parameters('JoinPass')]"
             }
           }
         }
