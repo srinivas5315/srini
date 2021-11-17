@@ -326,7 +326,7 @@
           }
         },
         {
-          "condition": "[variables('isWindowsOS')]",
+          "condition": false,
           "type": "Microsoft.Compute/virtualMachines/extensions",
           "name": "[concat(parameters('vmName'), '/configHpcComputeNode')]",
           "apiVersion": "2019-03-01",
