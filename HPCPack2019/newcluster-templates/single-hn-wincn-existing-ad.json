@@ -859,6 +859,10 @@
          "protectedSettings": {
           "configurationUrlSasToken": "[parameters('QrmInstallerBaseUrlSasToken')]",
           "configurationArguments": {
+            "SetupUserCredential": {
+              "UserName": "[parameters('adminUsername')]",
+              "Password": "[parameters('adminPassword')]"
+            },
             "SourceUrlSasToken": "[parameters('QrmInstallerBaseUrlSasToken')]"
           }
         }
