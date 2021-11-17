@@ -809,53 +809,6 @@
       }
     },
     {
-      "type": "Microsoft.Compute/virtualMachines/extensions",
-      "condition": false,
-      "name": "[concat(variables('clusterName'),'/setupHpcHeadNode')]",
-      "apiVersion": "2019-03-01",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/', variables('clusterName'), '/extensions/JoinADDomain')]",
-        "[concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]"
-      ],
-      "properties": {
-        "publisher": "Microsoft.Powershell",
-        "type": "DSC",
-        "typeHandlerVersion": "2.80",
-        "autoUpgradeMinorVersion": true,
-        "settings": {
-          "configuration": {
-            "url": "[concat(variables('sharedResxBaseUrl'),'/InstallPrimaryHeadNode.ps1.zip')]",
-            "script": "InstallPrimaryHeadNode.ps1",
-            "function": "InstallPrimaryHeadNode"
-          },
-          "configurationArguments": {
-            "ClusterName": "[variables('clusterName')]",
-            "SSLThumbprint": "[variables('certThumbprint')]",
-            "CNSize": "[parameters('computeNodeVMSize')]",
-            "SubscriptionId": "[subscription().subscriptionId]",
-            "VNet": "[variables('virtualNetworkName')]",
-            "Subnet": "[variables('subnetName')]",
-            "Location": "[resourceGroup().location]",
-            "ResourceGroup": "[variables('virtualNetworkResourceGroupName')]",
-            "VaultResourceGroup": "[variables('vaultResourceGroup')]",
-            "CertificateUrl": "[parameters('CertificateUrl')]",
-            "CNNamePrefix": "[variables('computeNodeNamePrefix')]",
-            "AutoGSUseManagedIdentity": "[equals(parameters('enableManagedIdentityOnHeadNode'), 'Yes')]"
-          }
-        },
-        "protectedSettings": {
-          "configurationArguments": {
-            "SetupUserCredential": {
-              "UserName": "[parameters('JoinName')]",
-              "Password": "[parameters('JoinPass')]"
-            },
-            "AzureStorageConnString": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountId'), '2019-04-01').keys[0].value)]"
-          }
-        }
-      }
-    },
-    {
       "condition": "[and(greater(parameters('computeNodeNumber'), 0), not(variables('useVmssForCN')))]",
       "apiVersion": "2019-05-01",
       "type": "Microsoft.Resources/deployments",
