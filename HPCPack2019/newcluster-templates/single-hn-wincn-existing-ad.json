@@ -810,7 +810,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "condition": false
+      "condition": false,
       "name": "[concat(variables('clusterName'),'/setupHpcHeadNode')]",
       "apiVersion": "2019-03-01",
       "location": "[resourceGroup().location]",
