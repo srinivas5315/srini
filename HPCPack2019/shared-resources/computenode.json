@@ -226,7 +226,7 @@
       "dnsServers": "[parameters('dnsServers')]"
     },
     "protectedSettings": {
-      "userPassword": "[parameters('JoinPass')]"
+      "userPassword": "[parameters('adminPassword')]"
     },
     "sshKeyConfig": {
       "publicKeys": [
@@ -326,7 +326,7 @@
           }
         },
         {
-          "condition": false,
+          "condition": true,
           "type": "Microsoft.Compute/virtualMachines/extensions",
           "name": "[concat(parameters('vmName'), '/configHpcComputeNode')]",
           "apiVersion": "2019-03-01",
@@ -348,7 +348,7 @@
               "certThumbprint": "[parameters('certThumbprint')]",
               "nonDomainRole": "[not(parameters('joinDomain'))]"
             },
-            "protectedSettings": "[if(parameters('joinDomain'), parameters('JoinPass'), json('null'))]"
+            "protectedSettings": "[parameters('JoinPass')]"
           }
         },
         {
