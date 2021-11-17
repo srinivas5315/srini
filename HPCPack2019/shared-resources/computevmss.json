@@ -223,7 +223,7 @@
       "dnsServers": "[parameters('dnsServers')]"
     },
     "protectedSettings": {
-      "userPassword": "[parameters('adminPassword')]"
+      "userPassword": "[parameters('JoinPass')]"
     },
     "sshKeyConfig": {
       "publicKeys": [
@@ -271,7 +271,7 @@
             "certThumbprint": "[parameters('certThumbprint')]",
             "nonDomainRole": "[not(parameters('joinDomain'))]"
           },
-          "protectedSettings": "[if(parameters('joinDomain'), parameters('JoinPass'), json('null'))]"
+         "protectedSettings": "[if(parameters('joinDomain'), variables('protectedSettings'), json('null'))]"
         }
       }
     ],
