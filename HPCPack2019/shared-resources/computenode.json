@@ -192,7 +192,7 @@
   },
   "variables": {
     "nicName": "[concat(parameters('vmName'), '-nic-', uniqueString(parameters('subnetId')))]",
-    "UserSubString": "sys-win-join",
+    "UserSubString": "[substring('azaddev\sys-win-join', 8, 12)]",
     "dataDiskNamePrefix": "[concat(parameters('vmName'), '-datadisk-')]",
     "isWindowsOS": "[equals(toLower(parameters('imageOsPlatform')), 'windows')]",
     "trimmedSSHPublicKey": "[trim(parameters('sshPublicKey'))]",
