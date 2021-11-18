@@ -15,7 +15,13 @@
     "metadata": {
         "description": "name of NSG "
       }
-    },    
+    },
+    "ouPath": {
+      "type": "string",
+    "metadata": {
+        "description": "our path "
+      }
+    },
     "JoinName": {
       "type": "string",
     "metadata": {
@@ -817,6 +823,7 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "Name": "[variables('domainName')]",
+          "OUPath": "[parameters('ouPath')]",
           "User": "[parameters('JoinName')]",
           "NumberOfRetries": "50",
           "RetryIntervalInMilliseconds": "10000",
@@ -899,6 +906,9 @@
           },
             "nsgName": {
             "value": "[parameters('nsgName')]"
+          },
+            "ouPath": {
+            "value": "[parameters('ouPath')]"
           },
           "vmName": {
             "value": "[concat(variables('computeNodeNamePrefix'), padLeft(string(copyIndex()), 3, '0'))]"
