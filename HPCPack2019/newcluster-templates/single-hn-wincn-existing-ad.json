@@ -907,7 +907,7 @@
             "nsgName": {
             "value": "[parameters('nsgName')]"
           },
-            "ouPath": {
+            "domainOUPath": {
             "value": "[parameters('ouPath')]"
           },
           "vmName": {
