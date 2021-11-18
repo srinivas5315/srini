@@ -14,6 +14,12 @@
         "description": "The VM name"
       }
     },
+    "nsgName": {
+      "type": "string",
+      "metadata": {
+        "description": "The NSG name"
+      }
+    },
     "JoinName": {
       "type": "string",
       "metadata": {
@@ -260,6 +266,9 @@
             }
           }
         ],
+        "networkSecurityGroup" : {
+          "id" :  "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgName'))]"
+        },
         "dnsSettings": "[if(empty(parameters('dnsServers')), json('null'), variables('dnsSettings'))]",
         "enableAcceleratedNetworking": "[parameters('enableAcceleratedNetworking')]"
       }
