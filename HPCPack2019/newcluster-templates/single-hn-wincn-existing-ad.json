@@ -10,6 +10,12 @@
         "description": "The name of the HPC cluster. It must be unique in the domain forest; It must contain between 3 and 15 characters with lowercase letters and numbers, and must start with a letter."
       }
     },
+    "nsgName": {
+      "type": "string",
+    "metadata": {
+        "description": "name of NSG "
+      }
+    },    
     "JoinName": {
       "type": "string",
     "metadata": {
@@ -28,7 +34,7 @@
         "description": "base url for qrm"
       }
     },
-        "QrmInstallerBaseUrlSasToken": {
+      "QrmInstallerBaseUrlSasToken": {
       "type": "securestring",
       "metadata": {
         "description": "The sasToken required to access QrmInstallerBaseUrl."
@@ -400,7 +406,7 @@
     "uniqueSuffix": "[uniqueString(variables('subnetRef'))]",
     "uniqueNicSuffix": "[concat('-nic-', variables('uniqueSuffix'))]",
     "nicNameHN": "[concat(variables('clusterName'), variables('uniqueNicSuffix'))]",
-    "nsgName": "[concat('hpcnsg-',uniquestring(resourceGroup().id, variables('subnetRef')))]",
+    "nsgName": "[parameters('nsgName')]",
     "networkSecurityGroupId": {
       "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
     },
@@ -644,7 +650,9 @@
             }
           }
         ],
-        "networkSecurityGroup": "[if(equals(parameters('createPublicIPAddressForHeadNode'), 'Yes'), variables('networkSecurityGroupId') , json('null'))]",
+        "networkSecurityGroup" : {
+          "id" :  "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
+        },
         "enableAcceleratedNetworking": "[equals(parameters('enableAcceleratedNetworking'), 'Yes')]"
       }
     },
@@ -888,6 +896,9 @@
         "parameters": {
           "subnetId": {
             "value": "[variables('subnetRef')]"
+          },
+            "nsgName": {
+            "value": "[parameters('nsgName')]"
           },
           "vmName": {
             "value": "[concat(variables('computeNodeNamePrefix'), padLeft(string(copyIndex()), 3, '0'))]"
