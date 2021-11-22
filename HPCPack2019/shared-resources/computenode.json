@@ -198,7 +198,7 @@
   },
   "variables": {
     "nicName": "[concat(parameters('vmName'), '-nic-', uniqueString(parameters('subnetId')))]",
-    "UserSubString": "[substring(parameters('JoinName'), indexOf(parameters('JoinName'),'\') + 1, length(parameters('JoinName')) - indexOf( parameters('JoinName'),'\') + 1)]",
+    "UserSubString": "[substring(parameters('JoinName'), 8, 12)]",
     "dataDiskNamePrefix": "[concat(parameters('vmName'), '-datadisk-')]",
     "isWindowsOS": "[equals(toLower(parameters('imageOsPlatform')), 'windows')]",
     "trimmedSSHPublicKey": "[trim(parameters('sshPublicKey'))]",
