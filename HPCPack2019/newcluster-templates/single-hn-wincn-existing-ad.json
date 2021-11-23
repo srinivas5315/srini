@@ -17,13 +17,13 @@
       }
     },
     "JoinName": {
-      "type": "string",
+      "type": "securestring",
     "metadata": {
         "description": "name to domain join"
       }
     },  
     "JoinPass": {
-      "type": "string",
+      "type": "securestring",
     "metadata": {
         "description": "pass to domain join"
       }
