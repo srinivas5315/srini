@@ -21,13 +21,13 @@
       }
     },
     "JoinName": {
-      "type": "string",
+      "type": "securestring",
       "metadata": {
         "description": "The value read from kv"
       }
     },
     "JoinPass": {
-      "type": "string",
+      "type": "securestring",
       "metadata": {
         "description": "The value read from kv"
       }
